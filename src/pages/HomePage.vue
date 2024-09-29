@@ -6,27 +6,38 @@ export default {
   components: {
     AsyncButton
   },
+  data() {
+    return {
+      clickCount: 0 // Track the number of clicks
+    };
+  },
   methods: {
     handleButtonClick() {
+      this.clickCount++; // Increment the click count on each button click
+      const delay = this.clickCount * 1000; // Increase wait time by 1 second per click
+
+      // Return a promise that resolves after the calculated delay
       return new Promise((resolve) => {
-        setTimeout(resolve, 2000);
+        setTimeout(resolve, delay);
       });
     }
   }
-}
+};
 </script>
 
 <template>
   <div class="block">
-    <h1>Welcome to homepage !</h1>
-    <AsyncButton @click="handleButtonClick">Disabled and animated for 2 secondes if clicked</AsyncButton>
+    <h1>Welcome to homepage!</h1>
+    <AsyncButton @click="handleButtonClick">
+      Disabled and animated for {{ clickCount + 2 }} seconds if clicked
+    </AsyncButton>
   </div>
 </template>
 
 <style scoped>
-  .block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 </style>
