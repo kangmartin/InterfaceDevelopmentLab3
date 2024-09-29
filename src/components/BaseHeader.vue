@@ -13,11 +13,12 @@ export default {
 
     <div class="left-container">
       <font-awesome-icon :icon="['fas', 'house']" class="icon"/>
-      <BaseButton label="Home" />
+      <a href="index.html" class="logo">Home</a>
 
     </div>
-
+      <BaseButton label="Login" color="warn"/>
       <button class="blackbutton">Login</button>
+
 
   </div>
 </template>
