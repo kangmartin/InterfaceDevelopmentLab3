@@ -5,16 +5,15 @@ export default {
 </script>
 
 <template>
-  <h1>Welcome to homepage !</h1>
+  <div class="block">
+    <h1>Welcome to homepage !</h1>
+  </div>
+
 </template>
 
 <style scoped>
-  body {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+  .block{
+    display: flex;
+    justify-content: center;
   }
 </style>
