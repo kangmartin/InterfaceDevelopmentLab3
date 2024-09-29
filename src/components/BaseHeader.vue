@@ -1,10 +1,6 @@
 <script>
-import BaseButton from "@/components/BaseButton.vue";
 export default {
   name: "BaseHeader",
-  components: {
-    BaseButton
-  }
 }
 </script>
 
@@ -14,9 +10,8 @@ export default {
     <div class="left-container">
       <font-awesome-icon :icon="['fas', 'house']" class="icon"/>
       <a href="index.html" class="logo">Home</a>
-
     </div>
-      <BaseButton label="Login" color="warn"/>
+
       <button class="blackbutton">Login</button>
 
 

@@ -2,10 +2,6 @@
 export default {
   name: "BaseButton",
   props: {
-    label: {
-      type: String,
-      required: true
-    },
     disabled: {
       type: Boolean,
       default: false
@@ -30,7 +26,7 @@ export default {
   <button
       :disabled="disabled"
       :class="buttonClass">
-    {{ label }}
+    <slot></slot>
   </button>
 </template>
 
@@ -38,8 +34,6 @@ export default {
 .base-button {
   font-weight: 600;
   font-size: 21px;
-  margin-right: 60px;
-  margin-left: 10px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
@@ -86,5 +80,4 @@ export default {
   background-color: #cccccc;
   cursor: not-allowed;
 }
-
 </style>
