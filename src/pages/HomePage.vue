@@ -1,10 +1,12 @@
 <script>
 import AsyncButton from "@/components/AsyncButton.vue";
+import SigninButton from "@/components/SigninButton.vue";
 
 export default {
   name: "HomePage",
   components: {
-    AsyncButton
+    AsyncButton,
+    SigninButton
   },
   data() {
     return {
@@ -31,6 +33,7 @@ export default {
     <AsyncButton @click="handleButtonClick">
       Disabled and animated for {{ clickCount + 2 }} seconds if clicked
     </AsyncButton>
+    <SigninButton/>
   </div>
 </template>
 
