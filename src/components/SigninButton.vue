@@ -12,6 +12,7 @@ export default {
     async signIn() {
       try {
         this.user = await signInAndGetUser();
+        this.$emit('user-signed-in', this.user);
       } catch (error) {
         console.error("Error signing in:", error);
       }

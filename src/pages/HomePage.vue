@@ -8,6 +8,9 @@ export default {
     AsyncButton,
     SigninButton
   },
+  props: {
+    user: Object
+  },
   data() {
     return {
       clickCount: 0 // Track the number of clicks
@@ -22,6 +25,9 @@ export default {
       return new Promise((resolve) => {
         setTimeout(resolve, delay);
       });
+    },
+    updateUser(user) {
+      this.$emit('update:user', user);
     }
   }
 };
@@ -33,7 +39,10 @@ export default {
     <AsyncButton @click="handleButtonClick">
       Disabled and animated for {{ clickCount + 2 }} seconds if clicked
     </AsyncButton>
-    <SigninButton/>
+    <SigninButton @user-signed-in="updateUser"/>
+    <div v-if="user">
+      <p>Signed in as: {{ user.name }}</p>
+    </div>
   </div>
 </template>
 
