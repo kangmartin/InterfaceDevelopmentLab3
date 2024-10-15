@@ -1,5 +1,9 @@
 # vue-oauth-microsoft-graph
 
+Before start the project add a .env file with this:
+```
+VUE_APP_OAUTH_CLIENT_ID=<YOUR_API_KEY>
+```
 ## Project setup
 ```
 npm install
