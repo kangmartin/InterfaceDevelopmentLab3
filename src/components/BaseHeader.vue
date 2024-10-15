@@ -1,5 +1,5 @@
 <script>
-import { inject } from 'vue';
+import { mapGetters } from 'vuex';
 import SigninButton from "@/components/SigninButton.vue";
 
 export default {
@@ -7,16 +7,10 @@ export default {
   components: {
     SigninButton
   },
-  setup() {
-    const user = inject('user');
-    return { user };
-  },
-  methods: {
-    handleUserSignedIn(user) {
-      this.$emit('user-signed-in', user);
-    }
+  computed: {
+    ...mapGetters(['user'])
   }
-}
+};
 </script>
 
 <template>
@@ -25,7 +19,7 @@ export default {
       <font-awesome-icon :icon="['fas', 'house']" class="icon"/>
       <a href="index.html" class="logo">Home</a>
     </div>
-    <SigninButton @user-signed-in="handleUserSignedIn"/>
+    <SigninButton />
   </div>
 </template>
 

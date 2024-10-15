@@ -1,5 +1,5 @@
 <script>
-import { inject } from 'vue';
+import { mapGetters } from 'vuex';
 import AsyncButton from "@/components/AsyncButton.vue";
 
 export default {
@@ -7,21 +7,18 @@ export default {
   components: {
     AsyncButton,
   },
-  setup() {
-    const user = inject('user');
-    return { user };
+  computed: {
+    ...mapGetters(['user'])
   },
   data() {
     return {
-      clickCount: 0 // Track the number of clicks
+      clickCount: 0
     };
   },
   methods: {
     handleButtonClick() {
-      this.clickCount++; // Increment the click count on each button click
-      const delay = this.clickCount * 1000; // Increase wait time by 1 second per click
-
-      // Return a promise that resolves after the calculated delay
+      this.clickCount++;
+      const delay = this.clickCount * 1000;
       return new Promise((resolve) => {
         setTimeout(resolve, delay);
       });
@@ -36,8 +33,8 @@ export default {
     <AsyncButton @click="handleButtonClick">
       Disabled and animated for {{ clickCount + 2 }} seconds if clicked
     </AsyncButton>
-    <div v-if="user.value">
-      <p>Signed in as: {{ user.value.name }}</p>
+    <div v-if="user">
+      <p>Signed in as: {{ user.name }}</p>
     </div>
   </div>
 </template>

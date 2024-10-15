@@ -1,18 +1,15 @@
 <script>
+import { mapActions } from 'vuex';
 import { signInAndGetUser } from "@/lib/microsoftGraph.js";
 
 export default {
   name: "SigninButton",
-  data() {
-    return {
-      user: null
-    };
-  },
   methods: {
+    ...mapActions(['updateUser']),
     async signIn() {
       try {
-        this.user = await signInAndGetUser();
-        this.$emit('user-signed-in', this.user);
+        const user = await signInAndGetUser();
+        this.updateUser(user);
       } catch (error) {
         console.error("Error signing in:", error);
       }

@@ -2,6 +2,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import './style.css';
+import store from './store';
 
 // Import de FontAwesome
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -16,5 +17,8 @@ const app = createApp(App);
 
 // Déclaration du composant global FontAwesomeIcon
 app.component('font-awesome-icon', FontAwesomeIcon);
+
+// Utilisation du store Vuex
+app.use(store);
 
 app.mount('#app');
