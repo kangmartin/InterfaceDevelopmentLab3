@@ -1,13 +1,18 @@
 <template>
   <div class="block">
-    <h1>Conversations Index Page</h1>
-    <p>This is a placeholder for the Conversations page.</p>
+    <h1>Conversation Show Page {{ id }}</h1>
+    <p>Conversation ID: {{ id }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ConversationsIndexPage'
+  name: 'ConversationShowPage',
+  computed: {
+    id() {
+      return this.$route.params.id;
+    }
+  }
 };
 </script>
 

@@ -2,12 +2,18 @@ import { createRouter, createWebHistory } from 'vue-router';
 import store from '@/store';
 import HomePage from '@/pages/HomePage.vue';
 import ConversationsIndexPage from '@/pages/ConversationsIndexPage.vue';
+import ConversationShowPage from '@/pages/ConversationShowPage.vue';
 
 const routes = [
   { path: '/', component: HomePage },
   {
     path: '/conversations',
     component: ConversationsIndexPage,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/conversations/:id',
+    component: ConversationShowPage,
     meta: { requiresAuth: true }
   }
 ];
