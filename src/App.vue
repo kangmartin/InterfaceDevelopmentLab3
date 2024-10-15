@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BaseHeader @user-signed-in="updateUser"/>
+    <BaseHeader/>
     <router-view />
     <BaseFooter/>
   </div>

@@ -23,7 +23,6 @@ export default {
     <button @click="signIn">Sign In</button>
   </div>
 </template>
-
 <style scoped>
 button {
   font-weight: 600;

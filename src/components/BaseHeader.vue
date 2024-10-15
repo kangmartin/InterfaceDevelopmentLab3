@@ -17,7 +17,8 @@ export default {
   <div class="header">
     <div class="left-container">
       <font-awesome-icon :icon="['fas', 'house']" class="icon"/>
-      <a href="index.html" class="logo">Home</a>
+      <a href="/" class="logo">Home</a>
+      <router-link v-if="user" to="/conversations">Conversations</router-link>
     </div>
     <SigninButton />
   </div>

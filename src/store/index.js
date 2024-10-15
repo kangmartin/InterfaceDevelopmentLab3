@@ -1,20 +1,30 @@
 import { createStore } from 'vuex';
 
-export default createStore({
-    state: {
-        user: null
+const store = createStore({
+  state: {
+    user: JSON.parse(localStorage.getItem('user')) || null
+  },
+  mutations: {
+    setUser(state, user) {
+      state.user = user;
+      localStorage.setItem('user', JSON.stringify(user));
     },
-    mutations: {
-        setUser(state, user) {
-            state.user = user;
-        }
-    },
-    actions: {
-        updateUser({ commit }, user) {
-            commit('setUser', user);
-        }
-    },
-    getters: {
-        user: (state) => state.user
+    clearUser(state) {
+      state.user = null;
+      localStorage.removeItem('user');
     }
+  },
+  actions: {
+    updateUser({ commit }, user) {
+      commit('setUser', user);
+    },
+    logout({ commit }) {
+      commit('clearUser');
+    }
+  },
+  getters: {
+    user: (state) => state.user
+  }
 });
+
+export default store;
