@@ -1,21 +1,19 @@
 <template>
   <div>
     <BaseHeader @user-signed-in="updateUser"/>
-    <HomePage @update:user="updateUser"/>
+    <router-view />
     <BaseFooter/>
   </div>
 </template>
 
 <script>
 import { reactive, provide } from 'vue';
-import HomePage from "@/pages/HomePage.vue";
 import BaseHeader from "@/components/BaseHeader.vue";
 import BaseFooter from "@/components/BaseFooter.vue";
 
 export default {
   name: 'App',
   components: {
-    HomePage,
     BaseHeader,
     BaseFooter
   },
