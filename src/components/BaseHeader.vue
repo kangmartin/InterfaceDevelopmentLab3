@@ -59,16 +59,6 @@ export default {
     margin-left: 10px;
   }
 
-  .blackbutton {
-    background-color: black;
-    color: white;
-    font-weight: 600;
-    padding: 11px 15px;
-    border-radius: 10px;
-    border: none;
-    width: 80px;
-  }
-
   .icon{
     font-size: 25px;
     margin-right: 7px;
