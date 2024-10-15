@@ -1,12 +1,13 @@
 <template>
   <div>
-    <BaseHeader/>
-    <HomePage :user="user" @update:user="updateUser"/>
+    <BaseHeader @user-signed-in="updateUser"/>
+    <HomePage @update:user="updateUser"/>
     <BaseFooter/>
   </div>
 </template>
 
 <script>
+import { reactive, provide } from 'vue';
 import HomePage from "@/pages/HomePage.vue";
 import BaseHeader from "@/components/BaseHeader.vue";
 import BaseFooter from "@/components/BaseFooter.vue";
@@ -18,14 +19,14 @@ export default {
     BaseHeader,
     BaseFooter
   },
-  data() {
-    return {
-      user: null
-    };
+  setup() {
+    const user = reactive({ value: null });
+    provide('user', user);
+    return { user };
   },
   methods: {
     updateUser(user) {
-      this.user = user;
+      this.user.value = user;
     }
   }
 };

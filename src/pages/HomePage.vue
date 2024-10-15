@@ -1,15 +1,15 @@
 <script>
+import { inject } from 'vue';
 import AsyncButton from "@/components/AsyncButton.vue";
-import SigninButton from "@/components/SigninButton.vue";
 
 export default {
   name: "HomePage",
   components: {
     AsyncButton,
-    SigninButton
   },
-  props: {
-    user: Object
+  setup() {
+    const user = inject('user');
+    return { user };
   },
   data() {
     return {
@@ -25,9 +25,6 @@ export default {
       return new Promise((resolve) => {
         setTimeout(resolve, delay);
       });
-    },
-    updateUser(user) {
-      this.$emit('update:user', user);
     }
   }
 };
@@ -39,9 +36,8 @@ export default {
     <AsyncButton @click="handleButtonClick">
       Disabled and animated for {{ clickCount + 2 }} seconds if clicked
     </AsyncButton>
-    <SigninButton @user-signed-in="updateUser"/>
-    <div v-if="user">
-      <p>Signed in as: {{ user.name }}</p>
+    <div v-if="user.value">
+      <p>Signed in as: {{ user.value.name }}</p>
     </div>
   </div>
 </template>

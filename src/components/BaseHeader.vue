@@ -1,25 +1,31 @@
 <script>
-import BaseButton from "@/components/BaseButton.vue";
+import { inject } from 'vue';
+import SigninButton from "@/components/SigninButton.vue";
+
 export default {
   name: "BaseHeader",
   components: {
-    BaseButton
+    SigninButton
+  },
+  setup() {
+    const user = inject('user');
+    return { user };
+  },
+  methods: {
+    handleUserSignedIn(user) {
+      this.$emit('user-signed-in', user);
+    }
   }
 }
 </script>
 
 <template>
   <div class="header">
-
     <div class="left-container">
       <font-awesome-icon :icon="['fas', 'house']" class="icon"/>
       <a href="index.html" class="logo">Home</a>
-      <BaseButton color="primary">Button</BaseButton>
     </div>
-
-      <button class="blackbutton">Login</button>
-
-
+    <SigninButton @user-signed-in="handleUserSignedIn"/>
   </div>
 </template>
 
